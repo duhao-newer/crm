@@ -1,4 +1,5 @@
 $(function(){
+    //登录功能
     $(".submit").click(async function(e){
         let account=$(".userName").val().trim();
         let password=$(".userPass").val().trim();
@@ -24,4 +25,5 @@ $(function(){
         }
         alert('用户名和密码出错了');
     })
+
 })

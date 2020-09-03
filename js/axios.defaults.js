@@ -1,5 +1,7 @@
 //对axios的请求地址进行统一的调配，即二次封装
-axios.defaults.baseURL = 'http://localhost:8888';
+axios.defaults.baseURL = 'http://127.0.0.1:8888';
+//ajax默认并不会带上cookie，所以要自己手动加上
+axios.defaults.withCredentials=true;
 //改变提交数据的格式，使之以表单的形式提交
 axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded';
 //再次改变数据的格式，使之成为:name=s&age=4
