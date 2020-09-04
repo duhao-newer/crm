@@ -19,7 +19,6 @@ $(function(){
         //进行升级改进,使用 async+await只能获取正确的结果，想要获取错误，需要用try/catch
         let res=await axios.post('/user/login',{account,password})
         if(parseInt(res.code)==0){
-            alert('登录成功');
             window.location.href='index.html';
             return;
         }
