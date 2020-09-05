@@ -71,7 +71,7 @@ $(function () {
                 }
                 if (text == '删除') {
                     let flag = confirm("你确定要删除此用户吗？")
-                    if (!flag) return;;
+                    if (!flag) return;
                     let result = await axios.get("/user/delete", {
                         params: { userId }
                     })
