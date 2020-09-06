@@ -24,21 +24,21 @@
 		<table class="tableBox" style="width:50%">
 			<thead>
 				<tr>
-					<th class="w5">编号</th>
+					<th class="w10">编号</th>
 					<th class="w15">日期</th>
-					<th class="w70">回访纪要</th>
-					<th class="w10">操作</th>
+					<th class="w45">回访纪要</th>
+					<th class="w30">操作</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<!-- <tr>
 					<td class="w5">1</td>
 					<td class="w15">2019-09-17</td>
-					<td class="w70 wrap">今天天气真的不错，我去拜访了客户，客户给我一根雪糕，但是雪糕还化了</td>
+					<td class="w50 wrap">今天天气真的不错，我去拜访了客户，客户给我一根雪糕，但是雪糕还化了</td>
 					<td class="w10">
 						<a href="javascript:;">删除</a>
 					</td>
-				</tr>
+				</tr> -->
 			</tbody>
 		</table>
 		<div class="infoBox" style="width:50%">
@@ -49,7 +49,20 @@
 				</div>
 				<span></span>
 			</div>
-
+			<div class="form" style="display:none">
+				<div class="inpBox">
+					<span>customerId</span>
+					<input class="customerId"></input>
+				</div>
+				<span></span>
+			</div>
+			<div class="form" style="display:none">
+				<div class="inpBox">
+					<span>visitId</span>
+					<input class="visitId"></input>
+				</div>
+				<span></span>
+			</div>
 			<div class="form">
 				<div class="inpBox">
 					<span>拜访纪要</span>
@@ -63,6 +76,12 @@
 	</div>
 
 	<!-- IMPORT JS -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/axios.min.js"></script>
+	<script src="../js/axios.defaults.js"></script>
+	<script src="../js/utils.js"></script>
+	<script src="../js/visitlist.js"></script>
+	<script src="../js/visitadd.js"></script>
 </body>
 
 </html>

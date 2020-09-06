@@ -93,5 +93,34 @@ $(function () {
         }
         temp !== page ? (page = temp, showCustomerList()) : null;
     });
-   
+    //利用事件委托实现编辑，删除
+    $('tbody').on('click', 'a',async e => {
+        // console.log(e.target)//<a href="javascript:;">编辑</a>
+        let target = e.target,
+            text = target.innerHTML.trim(),
+            tag = target.tagName;
+        if (tag == 'A') {
+            let customerId=$(target).parent().attr('customerId');
+            if(text=='编辑'){
+                window.location.href=`customeradd.html?id=${customerId}`
+                return;
+             }
+            if(text=='删除'){
+                let flag=confirm('你确定要删除此客户吗？');
+                if(!flag) return;
+                let result=await axios.get('/customer/delete',{
+                    params:{
+                        customerId
+                    }
+                })
+                if(result.code ==0){
+                    alert('删除客户成功~');
+                    $(target).parent().parent().remove();
+                    return;
+                }
+                return;
+            }
+        }
+
+    })
 })

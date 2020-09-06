@@ -33,7 +33,7 @@ $(function(){
               return;
           }  
           if(text=='删除'){
-              let flag = confirm("你确定要删除此职位吗？")
+              let flag = confirm("你确定要删除此项吗？")
               if (!flag) return;
               let result=await axios.get('/job/delete',{
                   params:{

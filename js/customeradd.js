@@ -1,4 +1,10 @@
 $(function () {
+    let customerId = null;
+    customerids = window.location.href.queryURLParams();
+    if (customerids.hasOwnProperty('id')) {
+        customerId = customerids.id;
+         showcustomer();
+    }
     //校验用户名
     function checkusername() {
         let username = $('.username').val().trim();
@@ -90,12 +96,45 @@ $(function () {
             type: $('.select').val(),
             address: $('textarea').val(),
         }
+        if(customerId){
+            params.customerId=customerId;
+            let result= await axios.post('/customer/update',params);
+            if(result.code == 0){
+                alert("修改客户数据成功")
+                window.location.href = "customerlist.html"
+                return ;
+            }
+            alert("网络不给力，稍后再试~")
+            return ; // 如果编辑了，程序就结束了，写个return
+        }
         //post请求params并不是必须的~
         let result = await axios.post('/customer/add', params);
         if (result.code != 0) {
             return alert('网络不给力~');
         }
         alert('添加客户成功~');
-        window.location.href = 'customerlist.html?lx=my';
+        window.location.href = 'customerlist.html';
     })
+    //数据回显
+    async function showcustomer() {
+        let result = await axios.get('/customer/info', {
+            params: {
+                customerId
+            }
+        })
+        if (result.code == 0) {
+            result.data ? result = result.data : null;
+            $('.username').val(result.name);
+            result.sex == 0 ? $('#man').prop('checked', true) : $('#women').prop('checked', true);
+            $('.useremail').val(result.email);
+            $('.userphone').val(result.phone);
+            $('.userqq').val(result.QQ);
+            $('.userweixin').val(result.weixin);
+            $('.select').val(result.type);
+            $('textarea').val(result.address);
+            return;
+        }
+        alert("编辑不成功，可能是网络不给力....")
+        customerId = null;
+    }
 })
